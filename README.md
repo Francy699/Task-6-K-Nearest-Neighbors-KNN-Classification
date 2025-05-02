@@ -18,6 +18,52 @@ This project demonstrates how to use the **K-Nearest Neighbors (KNN)** algorithm
   - 2 = Virginica
 
 ---
+🔍 What is K-Nearest Neighbors (KNN)?
+K-Nearest Neighbors (KNN) is a simple, intuitive supervised machine learning algorithm used for both classification and regression. It’s based on the idea that similar data points exist close to each other in space.
+
+📌 Key Concepts:
+Lazy Learning: KNN does not build a model during training. It simply stores the data.
+
+Instance-Based: It makes predictions based on the actual training data points.
+
+Distance-Based: Commonly uses Euclidean distance to measure how close points are.
+
+🔢 How KNN Works (for Classification):
+Choose a value for k (the number of neighbors).
+
+Calculate the distance between the input point and all points in the training set.
+
+Select the k nearest data points.
+
+Count the most frequent class among the k neighbors.
+
+Assign that class to the input point.
+
+🧠 Summary of Your KNN Model (from the Notebook)
+Dataset: Iris flower dataset (3 classes, 4 features).
+
+Preprocessing:
+
+Standardized features using StandardScaler.
+
+Split data into training and test sets (80/20).
+
+Training:
+
+Applied KNN for values of k from 1 to 10.
+
+Used KNeighborsClassifier from sklearn.
+
+Evaluation:
+
+For each k, printed out the classification accuracy.
+
+Accuracy ranged across values of k, helping to find the optimal one.
+
+✅ Observations:
+Higher accuracy is typically achieved with a moderate value of k (not too small to overfit, not too large to underfit).
+
+Feature scaling (standardization) is critical for KNN to work properly since it relies on distance calculations.
 
 ## 🤖 KNN Algorithm
 
@@ -25,6 +71,8 @@ This project demonstrates how to use the **K-Nearest Neighbors (KNN)** algorithm
 1. Stores all training data points.
 2. When a prediction is needed, calculates the distance between the new point and all training points.
 3. Selects the top **k** nearest neighbors and returns the most common class among them.
+   
+![image](https://github.com/user-attachments/assets/c6028e3b-cd20-4614-a4a1-011836dc2b50)
 
 Key points:
 - Lazy learning (no training phase).
@@ -60,6 +108,8 @@ y=pd.Series(iris.target, name="species")
 
 print(X.head())
 
+![Screenshot 2025-05-02 145628](https://github.com/user-attachments/assets/6b617a54-df51-40ed-b818-9c13775d6a93)
+
 print(y.value_counts())
 
 #Normalize features using StandardScaler
@@ -79,6 +129,9 @@ for k in range(1,11):
     acc=accuracy_score(y_test,y_pred)
     print(f"K={k} --> Accuracy : {acc: .2f}")
 
+![Screenshot 2025-05-02 145638](https://github.com/user-attachments/assets/23e1cd92-078e-48a7-99e6-512454c1c099)
+
+
 best_k=3
 knn=KNeighborsClassifier(n_neighbors=best_k)
 knn.fit(X_train,y_train)
@@ -94,6 +147,9 @@ plt.title(f"Confusion Matrix for K={best_k}")
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.show()
+
+![Screenshot 2025-05-02 145651](https://github.com/user-attachments/assets/2d23a9f4-6abd-4f33-b23d-d59ff272fdc3)
+
 
 from matplotlib.colors import ListedColormap
 X_2d=X_scaled[:, :2] #only first 2 features
@@ -123,6 +179,7 @@ plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.show()
 ```
+![Screenshot 2025-05-02 145734](https://github.com/user-attachments/assets/76e028ac-01e6-40b2-b27e-e8a14b12e155)
 
 ---
 
